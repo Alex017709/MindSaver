@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>MindSaver - Відновлення доступу</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="auth-panel">
+            
+            <div id="resetStep1">
+                <h2 style="margin-bottom: 30px; text-align: center; font-size: 32px;">Відновлення доступу</h2>
+                <div class="input-group">
+                    <label>Логін (Ім'я в системі)</label>
+                    <input type="text" id="reset_login" class="login-input" required>
+                </div>
+                <div class="input-group">
+                    <label>Підтвердіть Ім'я</label>
+                    <input type="text" id="reset_name" class="login-input" required>
+                </div>
+                <div class="input-group">
+                    <label>Дата народження (РРРР.ММ.ДД)</label>
+                    <input type="text" id="reset_birth" class="login-input" placeholder="2000.01.01" required>
+                </div>
+                <button type="button" onclick="handlePasswordReset(event)" class="login-button">Знайти акаунт</button>
+                <a href="/" style="margin-top: 15px; display: block; text-align: center; font-size: 20px; color: var(--text-muted); text-decoration: none;">Назад до входу</a>
+            </div>
+
+            <div id="resetStep2" style="display:none;">
+                <h2 style="margin-bottom: 30px; text-align: center; font-size: 32px;">Новий пароль</h2>
+                <div class="input-group">
+                    <label>Введіть новий пароль</label>
+                    <input type="password" id="new_pass" class="login-input" required>
+                </div>
+                <button type="button" onclick="saveNewPassword()" class="login-button">Оновити пароль</button>
+                <button type="button" onclick="goBackToStep1()" class="login-button" style="background-color: #6c757d; margin-top: 10px;">Назад</button>
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

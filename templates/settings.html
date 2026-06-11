@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Налаштування</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <nav>
+                <a href="/calendar" class="nav-item">
+                    <span class="material-icons">calendar_today</span>
+                    календар
+                </a>
+                <a href="/stats" class="nav-item">
+                    <span class="material-icons">show_chart</span>
+                    статистика
+                </a>
+            </nav>
+            
+            <div class="footer-nav">
+                <a href="/profile" class="nav-item profile-item">
+                    <img src="/static/image/1.png" alt="Профіль" class="profile-avatar">
+                    профіль
+                </a>
+                <a href="/settings" class="nav-item active settings-item">
+                    <span class="material-icons">settings</span>
+                    налаштування
+                </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="settings-view" class="tab-content active">
+                <div class="settings-card">
+                    <div class="accordion-item">
+                        <input type="checkbox" id="privacy-toggle" class="accordion-toggle">
+                        <label for="privacy-toggle" class="setting-option accordion-header">налаштування приватності</label>
+                        <div class="accordion-content">
+                             <p>Введіть новий пароль:</p>
+                             <input type="password" id="new-password-input" placeholder="••••••••" class="privacy-input" style="width: 100%;">
+                            <button id="save-password-btn" class="save-button" style="width: auto; padding: 8px 15px; font-size: 16px; border-radius: 5px; margin-bottom: 10px;">Змінити</button>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <input type="checkbox" id="filter-toggle" class="accordion-toggle">
+                        <label for="filter-toggle" class="setting-option accordion-header">Налаштування фільтрації (Дати/Хештег)</label>
+                        <div class="accordion-content">
+                            <p style="margin-bottom: 5px;">Початкова дата:</p><input type="date" id="filter-start-date" class="privacy-input" style="width: 100%;">
+                            <p style="margin-bottom: 5px;">Кінцева дата:</p><input type="date" id="filter-end-date" class="privacy-input" style="width: 100%;">
+                            <p style="margin-bottom: 5px;">Хештег:</p>
+                            <select id="filter-hashtag" class="tag-select" style="margin-top: 5px; margin-bottom: 15px;">
+                                <option value="-1">Всі хештеги</option>
+                                <option value="0">party</option>
+                                <option value="1">birthday</option>
+                                <option value="2">shopping</option>
+                                <option value="3">fishing</option>
+                                <option value="4">watch film</option>
+                                <option value="5">listening music</option>
+                                <option value="6">work</option>
+                                <option value="7">teaching</option>
+                                <option value="8">relax</option>
+                                <option value="9">play game</option>
+                            </select>
+                            <button id="save-filters-btn" class="save-button" style="border-radius: 5px; padding: 8px 15px; font-size: 16px;">Зберегти фільтри</button>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item"><a href="/privacy" class="setting-option accordion-header">Політика конфіденційності</a></div>
+                    <div class="accordion-item"><a href="/system_oc" class="setting-option accordion-header">схема оцінювання</a></div>
+                    
+                    <div class="accordion-item">
+                        <input type="checkbox" id="accordion-delete" class="accordion-toggle">
+                        <label for="accordion-delete" class="accordion-header" style="color: #F44336; font-weight: bold;">Видалення акаунту</label>
+                        <div class="accordion-content">
+                            <p style="margin-bottom: 15px; font-size: 18px;">Увага! Ця дія є незворотною. Усі ваші записи та дані будуть стерті.</p>
+                            <div class="input-group" style="margin-bottom: 15px;">
+                                <label style="font-size: 18px; display: block; margin-bottom: 5px;">Введіть пароль для підтвердження</label>
+                                <input type="password" id="delete-password-input" class="login-input" style="font-size: 18px; padding: 10px 15px;" required>
+                            </div>
+                            <button type="button" id="delete-account-btn" class="login-button" style="background-color: #F44336; color: white; border-color: #F44336; margin-top: 10px; font-size: 20px; padding: 10px; width: auto;">Видалити профіль назавжди</button>
+                        </div>
+                    </div>
+                    
+                    <div class="theme-switch-container">
+                        <span class="material-icons sun-icon">wb_sunny</span>
+                        <div class="toggle-switch"><input type="checkbox" id="theme-toggle" class="toggle-input"><label for="theme-toggle" class="toggle-label"></label></div>
+                        <span class="material-icons moon-icon">mode_night</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

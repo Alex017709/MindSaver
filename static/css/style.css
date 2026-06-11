@@ -1,0 +1,413 @@
+/* ========================================================= */
+/* === 1. ЗМІННІ КОЛЬОРІВ (ТЕМИ) === */
+/* ========================================================= */
+/* Світла тема */
+:root {
+    --bg-body: #D9E4FF;                   
+    --bg-card: white;                     
+    --bg-sidebar: white;
+    --text-main: #000000;                 
+    --text-muted: #767676;                
+    --sidebar-border: 1px solid #C4C4C4;  
+    --sidebar-text: #000000; /* Текст панелі завжди чорний */
+    --active-bg: #D9E4FF;                 
+    --bg-input: #D9E4FF;                  
+    --accent-color: #384EDB;              
+    --border-color: #C4C4C4;
+    --bg-hover: #ffffff;
+    --modal-overlay: rgba(0,0,0,0.5);
+}
+
+/* Темна тема за твоїми кольорами */
+[data-theme="dark"] {
+    --bg-body: #13122B;                   /* Найтемніший рівень (глибокий нічний синій) */
+    --bg-card: #1E1C40;                   /* Картки трохи світліші за фон (створює ефект об'єму) */
+    --bg-sidebar: #191736;                /* Бокова панель органічно вписується в темний простір */
+    --text-main: #EAEAF2;                 /* М'який білий текст (не сліпить очі) */
+    --text-muted: #8E94B6;                /* Приємний сіро-блакитний для неактивного тексту */
+    --sidebar-border: 1px solid #2F2D59;  /* Ледь помітна межа замість яскравої білої смуги */
+    --sidebar-text: #EAEAF2;              /* Текст панелі тепер світлий, бо фон темний! */
+    --active-bg: #32305C;                 /* Активний пункт меню трохи виділяється */
+    --bg-input: #0F0E24;                  /* Поля вводу темніші за картки (здаються "втиснутими" всередину) */
+    --accent-color: #5C76FF;              /* Акцентний синій зроблено трохи яскравішим для контрасту */
+    --border-color: #2F2D59;              /* Темні рамки замість світлих */
+    --bg-hover: #26244D;                  /* Легке висвітлення при наведенні мишки */
+    --modal-overlay: rgba(0, 0, 0, 0.75); /* Затемнення фону при відкритті модальних вікон */
+}
+
+/* ========================================================= */
+/* === 2. БАЗОВІ НАЛАШТУВАННЯ ТА СТРУКТУРА === */
+/* ========================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+a { text-decoration: none; color: inherit; }
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    display: flex;
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--bg-card); 
+    overflow: hidden; 
+}
+
+/* ========================================================= */
+/* === 3. БОКОВА ПАНЕЛЬ === */
+/* ========================================================= */
+.sidebar {
+    width: 250px; height: 100%;
+    border-right: var(--sidebar-border); 
+    background-color: var(--bg-sidebar);
+    display: flex; flex-direction: column;
+    padding-top: 20px; padding-bottom: 20px; z-index: 10;
+}
+.sidebar nav { display: flex; flex-direction: column; height: 100%; }
+.nav-item {
+    display: flex; align-items: center; padding: 15px 20px; margin-bottom: 5px;
+    color: var(--text-main); font-size: 20px; font-weight: 500; border: 3px solid transparent;
+}
+.nav-item .material-icons { margin-right: 15px; font-size: 28px; }
+.nav-item.active {
+    background-color: var(--active-bg); color: var(--text-main);
+    border-left: 5px solid var(--accent-color); border-radius: 0 50px 50px 0; 
+}
+.nav-item:not(.active):hover {
+    background-color: var(--bg-hover); border: 3px solid var(--text-main);
+    border-radius: 20px; padding-left: 20px;
+}
+.profile-item, .settings-item { margin-top: auto; }
+.settings-item { margin-top: 10px; }
+.profile-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 15px; }
+
+/* ========================================================= */
+/* === 4. ЦЕНТРАЛЬНИЙ КОНТЕНТ ТА КАРТКИ === */
+/* ========================================================= */
+.main-content {
+    flex-grow: 1; 
+    background-color: var(--bg-body);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 40px; 
+    overflow-y: auto;
+    height: 100%;
+}
+.form-card, .stats-card, .settings-card {
+    background-color: var(--bg-card); width: 100%; max-width: 600px;
+    padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); color: var(--text-main);
+}
+.profile-card {
+    background-color: var(--bg-card); width: 100%; max-width: 800px; /* ЗБІЛЬШЕНО ВІКНО ПРОФІЛЮ */
+    padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); color: var(--text-main);
+}
+
+.big-plus-btn {
+    width: 400px; 
+    height: 400px; 
+    background-color: var(--bg-card); 
+    border-radius: 50%; 
+    border: none; 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    font-size: 500px; 
+    color: var(--accent-color); 
+    font-weight: 100;
+}
+.big-plus-btn:hover { transform: scale(1.05); }
+.plus-icon {
+    font-size: 700px; 
+    color: var(--accent-color); 
+    font-weight: 200;
+    line-height: 0; 
+    margin-bottom: 150px; /* Компенсує базову лінію шрифту, піднімаючи плюс чітко в центр */
+}
+/* ========================================================= */
+/* === 5. КАЛЕНДАР ТА МОДАЛЬНЕ ВІКНО === */
+/* ========================================================= */
+.calendar-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 15px;
+    width: 100%; max-width: 1000px; margin: 0 auto;
+}
+.calendar-day {
+    position: relative; background-color: var(--bg-card); border: 2px solid var(--border-color);
+    border-radius: 15px; aspect-ratio: 1 / 1; display: flex; justify-content: center; align-items: center;
+    cursor: pointer; overflow: hidden;
+}
+.calendar-day:hover { border-color: var(--text-main); }
+.day-number { position: absolute; bottom: 10px; font-weight: bold; font-size: 18px; z-index: 2; color: var(--text-main); }
+.plus-sign { font-size: 32px; color: var(--accent-color); z-index: 2; }
+
+.modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: var(--modal-overlay); justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: var(--bg-card); padding: 30px; border-radius: 20px; 
+    width: 650px; /* ЗБІЛЬШЕНО МОДАЛЬНЕ ВІКНО */
+    max-width: 95%; position: relative; color: var(--text-main);
+}
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text-main); }
+
+/* ========================================================= */
+/* === 6. СТОРІНКА ВВЕДЕННЯ === */
+/* ========================================================= */
+.rating-group { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    margin-bottom: 25px; 
+    width: 100%; 
+}
+.rating-group h3 { 
+    width: 150px; 
+    font-size: 22px; 
+    text-align: left; 
+    margin: 0; 
+    padding-top: 5px; 
+}
+
+/* Обгортка для того, щоб смайлики були чітко ПІД шкалою */
+.scale-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+    align-items: center; 
+}
+.scale-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    width: 100%; 
+    justify-content: center; 
+}
+.scale-squares, .squares { 
+    display: flex; 
+    gap: 4px; 
+}
+
+/* Смайлики чітко під квадратами */
+.scale-labels { 
+    display: flex; 
+    justify-content: space-between; 
+    width: 356px; 
+    margin-top: 8px; 
+    font-size: 24px; 
+}
+
+.scale-control, .scale-btn {
+    width: 35px; height: 35px; border-radius: 50%; border: 2px solid var(--text-main); 
+    background: transparent; color: var(--text-main); font-size: 22px; cursor: pointer; 
+    display: flex; justify-content: center; align-items: center;
+}
+.square-item { 
+    width: 32px; height: 32px; border: 2px solid var(--text-main); 
+    cursor: pointer; background-color: var(--bg-card); 
+}
+.square-item.filled { 
+    background-color: var(--text-main); 
+}
+
+.tag-dropdown {
+    padding: 10px 15px; width: 100%; border: 1px solid var(--border-color); border-radius: 20px;
+    background-color: var(--bg-input); color: var(--text-main); font-size: 18px; cursor: pointer;
+}
+.note-input {
+    width: 100%; height: 100px; border: 1px solid var(--border-color); border-radius: 15px; padding: 10px;
+    background-color: var(--bg-input); color: var(--text-main); font-size: 16px; resize: none;
+}
+
+/* ФІКС: Кнопка стає впритул до хештегу, звільняючи правий кут для персонажа */
+.save-and-tag-container {
+    display: flex; 
+    justify-content: flex-start; /* Кнопка липне до хештегу зліва */
+    align-items: center; 
+    margin-top: 30px; 
+    gap: 20px; /* Фіксована відстань між вибором та кнопкою */
+    width: 100%;
+}
+
+.save-button {
+    padding: 12px 25px; width: 100%; background-color: var(--accent-color); color: white;
+    font-size: 20px; border: none; border-radius: 100px; cursor: pointer; font-weight: bold;
+}
+
+/* Позиціонування персонажа в порожньому правому кутку */
+.data-input-card { 
+    position: relative; 
+}
+.mascot-form-corner {
+    width: 80px; 
+    height: auto; 
+    position: absolute; 
+    bottom: 20px; 
+    right: 20px; /* Персонаж сидить у кутку, де нікого немає */
+}
+/* ========================================================= */
+/* === 7. СТАТИСТИКА ТА ПРОФІЛЬ === */
+/* ========================================================= */
+.pie-chart {
+    width: 300px; 
+    height: 300px; 
+    border-radius: 50%; margin: 0 auto 25px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.chart-legend {
+    display: flex; justify-content: center; gap: 25px; margin-bottom: 25px; 
+    font-size: 18px; font-weight: bold; color: var(--text-main);
+}
+.profile-header { display: flex; align-items: flex-start; margin-bottom: 30px; }
+.profile-large-avatar { width: 120px; height: 120px; border-radius: 5px; object-fit: cover; margin-right: 30px; }
+.bar-chart-container { display: flex; justify-content: space-around; align-items: flex-end; height: 200px; border-bottom: 1px solid var(--border-color); margin-bottom: 30px; }
+.stat-bar-group { display: flex; flex-direction: column; align-items: center; width: 80px; }
+.bar { width: 30px; border-radius: 5px 5px 0 0; margin-bottom: 10px; transition: height 0.5s; }
+
+/* ОКРЕМІ КОЛЬОРИ ДЛЯ СТОВПЧИКІВ ПРОФІЛЮ */
+.mood-bar { background-color: #d9e4ff !important; }
+.stress-bar { background-color: #384edb !important; }
+.energy-bar { background-color: #1e2a80 !important; } 
+
+/* ========================================================= */
+/* === 8. НАЛАШТУВАННЯ ТА ВХІД === */
+/* ========================================================= */
+.accordion-item { margin-bottom: 15px; }
+.accordion-toggle { display: none; }
+.accordion-header { display: block; padding: 15px 10px; border: 1px solid var(--border-color); border-radius: 5px; cursor: pointer; }
+.accordion-content {
+    max-height: 0; overflow: hidden; padding: 0 15px; transition: 0.3s;
+    background-color: var(--bg-input); border-radius: 5px;
+}
+.accordion-toggle:checked ~ .accordion-content { max-height: 500px; padding: 15px; }
+.theme-switch-container { display: flex; align-items: center; justify-content: center; margin-top: 30px; }
+.sun-icon, .moon-icon { font-size: 30px; color: var(--text-main); margin: 0 10px; }
+.toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.toggle-input { opacity: 0; width: 0; height: 0; }
+.toggle-label { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); transition: 0.4s; border-radius: 34px; }
+.toggle-label:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: var(--bg-card); transition: 0.4s; border-radius: 50%; }
+.toggle-input:checked + .toggle-label { background-color: var(--accent-color); }
+.toggle-input:checked + .toggle-label:before { transform: translateX(26px); }
+
+/* Сторінка Входу */
+.login-wrapper {
+    display: flex; gap: 120px; align-items: center; max-width: 1400px;
+    padding: 20px; width: 100%; justify-content: center;
+}
+.left-panel, .right-panel { background-color: var(--bg-card); border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); align-self: flex-start; }
+.left-panel { padding: 50px; width: 1000px; height: 950px; }
+.right-panel { margin-top: 180px; padding: 50px; width: 900px; height: 700px; display: flex; flex-direction: column; align-items: center; }
+.auth-panel { background-color: var(--bg-card); border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 50px; width: 100%; max-width: 600px; }
+.welcome-block { display: flex; align-items: flex-start; margin-bottom: 25px; }
+.welcome-block img { width: 370px; height: 370px; margin-right: 25px; border-radius: 50%; }
+.welcome-text h1 { font-size: 40px; font-weight: 600; margin-bottom: 15px; color: var(--text-main); }
+.welcome-text h2 { font-size: 32px; line-height: 1.3; color: var(--text-main); }
+.welcome-info { margin-top: 30px; }
+.welcome-info h3 { font-size: 24px; margin-bottom: 15px; color: var(--text-main); }
+.info-list { list-style-type: none; padding-left: 0; }
+.info-list li { font-size: 24px; color: var(--text-muted); line-height: 1.8; margin-bottom: 10px; padding-left: 20px; position: relative; }
+.info-list li::before { content: "•"; color: var(--text-main); font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; position: absolute; left: 0; top: 0; }
+.login-form { width: 100%; text-align: center; margin-top: 20px; }
+.login-form h2 { font-size: 32px; margin-bottom: 40px; color: var(--text-main); }
+.input-group { width: 100%; margin-bottom: 30px; }
+.input-group label { display: block; text-align: left; margin-bottom: 5px; font-size: 24px; color: var(--text-main); }
+.login-input { width: 100%; padding: 15px 20px; border: 3px solid var(--accent-color); border-radius: 100px; font-size: 24px; outline: none; background-color: var(--bg-input); color: var(--text-main); }
+.login-button { width: 100%; padding: 15px; background-color: var(--bg-sidebar); color: var(--text-main); font-size: 28px; font-weight: 600; border: 3px solid var(--accent-color); border-radius: 20px; cursor: pointer; margin-top: 30px; }
+.login-button:hover { background-color: var(--bg-hover); }
+.form-footer { width: 100%; display: flex; justify-content: space-between; margin-top: 20px; font-size: 24px; }
+.form-footer a { color: var(--text-muted); text-decoration: none; }
+
+/* ========================================================= */
+/* === АНІМАЦІЯ ПЕРЕХОДУ МІЖ СТОРІНКАМИ === */
+/* ========================================================= */
+
+/* Ефект: сторінка плавно проявляється і м'яко піднімається вгору на 10px */
+@keyframes pageTransition {
+    from {
+        opacity: 0;
+        transform: translateY(10px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Автоматично запускає анімацію при завантаженні будь-якої сторінки */
+.app-container, .login-wrapper {
+    animation: pageTransition 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* =========================================
+   ГРАДІЄНТИ ДЛЯ ШКАЛ ОЦІНЮВАННЯ
+========================================= */
+
+/* 1. НАСТРІЙ (Від світло-зеленого до насиченого зеленого) */
+#mood-scale .square-item.filled:nth-child(1) { background-color: #e8f5e9 !important; border-color: #e8f5e9 !important; }
+#mood-scale .square-item.filled:nth-child(2) { background-color: #c8e6c9 !important; border-color: #c8e6c9 !important; }
+#mood-scale .square-item.filled:nth-child(3) { background-color: #a5d6a7 !important; border-color: #a5d6a7 !important; }
+#mood-scale .square-item.filled:nth-child(4) { background-color: #81c784 !important; border-color: #81c784 !important; }
+#mood-scale .square-item.filled:nth-child(5) { background-color: #66bb6a !important; border-color: #66bb6a !important; }
+#mood-scale .square-item.filled:nth-child(6) { background-color: #4caf50 !important; border-color: #4caf50 !important; }
+#mood-scale .square-item.filled:nth-child(7) { background-color: #43a047 !important; border-color: #43a047 !important; }
+#mood-scale .square-item.filled:nth-child(8) { background-color: #388e3c !important; border-color: #388e3c !important; }
+#mood-scale .square-item.filled:nth-child(9) { background-color: #2e7d32 !important; border-color: #2e7d32 !important; }
+#mood-scale .square-item.filled:nth-child(10) { background-color: #1b5e20 !important; border-color: #1b5e20 !important; }
+
+/* 2. ЕНЕРГІЯ (Від світло-блакитного до темно-синього) */
+#energy-scale .square-item.filled:nth-child(1) { background-color: #e3f2fd !important; border-color: #e3f2fd !important; }
+#energy-scale .square-item.filled:nth-child(2) { background-color: #bbdefb !important; border-color: #bbdefb !important; }
+#energy-scale .square-item.filled:nth-child(3) { background-color: #90caf9 !important; border-color: #90caf9 !important; }
+#energy-scale .square-item.filled:nth-child(4) { background-color: #64b5f6 !important; border-color: #64b5f6 !important; }
+#energy-scale .square-item.filled:nth-child(5) { background-color: #42a5f5 !important; border-color: #42a5f5 !important; }
+#energy-scale .square-item.filled:nth-child(6) { background-color: #2196f3 !important; border-color: #2196f3 !important; }
+#energy-scale .square-item.filled:nth-child(7) { background-color: #1e88e5 !important; border-color: #1e88e5 !important; }
+#energy-scale .square-item.filled:nth-child(8) { background-color: #1976d2 !important; border-color: #1976d2 !important; }
+#energy-scale .square-item.filled:nth-child(9) { background-color: #1565c0 !important; border-color: #1565c0 !important; }
+#energy-scale .square-item.filled:nth-child(10) { background-color: #0d47a1 !important; border-color: #0d47a1 !important; }
+
+/* 3. СТРЕС (Від жовтого до тривожно-червоного) */
+#stress-scale .square-item.filled:nth-child(1) { background-color: #fff9c4 !important; border-color: #fff9c4 !important; }
+#stress-scale .square-item.filled:nth-child(2) { background-color: #fff59d !important; border-color: #fff59d !important; }
+#stress-scale .square-item.filled:nth-child(3) { background-color: #ffe082 !important; border-color: #ffe082 !important; }
+#stress-scale .square-item.filled:nth-child(4) { background-color: #ffd54f !important; border-color: #ffd54f !important; }
+#stress-scale .square-item.filled:nth-child(5) { background-color: #ffca28 !important; border-color: #ffca28 !important; }
+#stress-scale .square-item.filled:nth-child(6) { background-color: #ffb300 !important; border-color: #ffb300 !important; }
+#stress-scale .square-item.filled:nth-child(7) { background-color: #fb8c00 !important; border-color: #fb8c00 !important; }
+#stress-scale .square-item.filled:nth-child(8) { background-color: #f4511e !important; border-color: #f4511e !important; }
+#stress-scale .square-item.filled:nth-child(9) { background-color: #e53935 !important; border-color: #e53935 !important; }
+#stress-scale .square-item.filled:nth-child(10) { background-color: #b71c1c !important; border-color: #b71c1c !important; }
+
+/* =========================================
+   ЕФЕКТ ЗБІЛЬШЕННЯ ДЛЯ КНОПКИ ПРИ НАВЕДЕННІ
+========================================= */
+.save-button {
+    /* Додаємо плавність для всіх переходів (щоб кнопка не смикалася різко) */
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+}
+
+.save-button:hover {
+    /* Збільшуємо кнопку на 0.2 (тобто стає 120% від свого розміру) */
+    transform: scale(1.2) !important;
+    
+    /* Додатково: додамо легку тінь при наведенні, щоб це виглядало об'ємно і круто */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+    
+    /* Робимо курсор у вигляді пальця */
+    cursor: pointer;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Схема Оцінювання</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="sidebar">
+            <nav>
+                <a href="/calendar" class="nav-item">
+                    <span class="material-icons">calendar_today</span>
+                    календар
+                </a>
+                
+                <a href="/stats" class="nav-item">
+                    <span class="material-icons">show_chart</span>
+                    статистика
+                </a>
+            </nav>
+            
+            <div class="footer-nav">
+             
+                
+                <a href="/profile" class="nav-item profile-item">
+                    <img src="/static/image/1.png" alt="Профіль" class="profile-avatar">
+                    профіль
+                </a>
+                
+                <a href="/settings" class="nav-item active settings-item">
+                    <span class="material-icons">settings</span>
+                    налаштування
+                </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="evaluation-scheme-view" class="tab-content active">
+                <div class="settings-card" style="max-width: 750px; line-height: 1.6;">
+                    
+                    <div class="policy-content">
+                        <h2 style="margin-bottom: 25px; text-align: center; font-weight: bold;">Схема Оцінювання Психологічного Стану (Шкала 1-10)</h2>
+
+                        <h3 style="margin-top: 20px; font-size: 22px; color: var(--accent-color);">1. Настрій</h3>
+                        <p style="margin-bottom: 10px; color: var(--text-muted);"><strong>Мета:</strong> Оцінити загальний емоційний фон. Чим вище бал, тим кращий настрій.</p>
+                        <p><strong>10</strong> Ейфорія, Натхнення: Максимальна радість і щастя. Життя чудове.</p>
+                        <p><strong>8-9</strong> Відмінно, Радість: Дуже позитивний, задоволений, бадьорий.</p>
+                        <p><strong>6-7</strong> Добре, Комфорт: Позитивний, але без сильних емоційних сплесків.</p>
+                        <p><strong>5</strong> Нейтрально, Стабільно: Спокійний стан, немає виражених емоцій.</p>
+                        <p><strong>3-4</strong> Погано, Роздратування: Невеликий смуток, незадоволення, легке роздратування.</p>
+                        <p style="margin-bottom: 20px;"><strong>1-2</strong> Критично, Пригнічення: Глибокий смуток, апатія, сильна тривога або переживання.</p>
+
+                        <h3 style="margin-top: 20px; font-size: 22px; color: var(--accent-color);">2. Рівень Енергії</h3>
+                        <p style="margin-bottom: 10px; color: var(--text-muted);"><strong>Мета:</strong> Оцінити фізичну та ментальну бадьорість. Чим вище бал, тим більше сил.</p>
+                        <p><strong>10</strong> Надлишок Енергії: Відчуття, що можеш "звернути гори". Повна готовність до дії.</p>
+                        <p><strong>8-9</strong> Високий: Багато сил, гарна концентрація, жодних ознак втоми.</p>
+                        <p><strong>6-7</strong> Достатній: Енергії вистачає для ефективної роботи та справ.</p>
+                        <p><strong>5</strong> Середній: Звичайний уровень.</p>
+                        <p><strong>3-4</strong> Низький: Відчуття млявості, важко розпочати роботу, хочеться відпочити.</p>
+                        <p style="margin-bottom: 20px;"><strong>1-2</strong> Виснаження: Фізична та ментальна втома, мінімальна здатність до активності.</p>
+
+                        <h3 style="margin-top: 20px; font-size: 22px; color: var(--accent-color);">3. Рівень Стресу</h3>
+                        <p style="margin-bottom: 10px; color: var(--text-muted);"><strong>Мета:</strong> Оцінити ступінь суб'єктивного напруження. Важливо: чим вище бал, тим гірший стан (більше стресу).</p>
+                        <p><strong>10</strong> Паніка/Криза: Нестерпний тиск, нездатність мислити, фізичні прояви стресу (тремтіння, тахікардія).</p>
+                        <p><strong>8-9</strong> Сильний/Гострий: Значне емоційне та фізичне напруження, відчутна тривога. Впливає на сон і харчування.</p>
+                        <p><strong>6-7</strong> Високий: Відчутний тиск (дедлайни, конфлікти). Потрібно докладати зусиль для управління.</p>
+                        <p><strong>4-5</strong> Помірний: Керований тиск. Виникає через буденні справи, але не вибиває з колії.</p>
+                        <p><strong>2-3</strong> Низький: Легке занепокоєння, яке швидко минає. Загалом спокійний стан.</p>
+                        <p style="margin-bottom: 25px;"><strong>1</strong> Відсутній: Повний спокій, розслабленість. Жодного напруження.</p>
+                    </div>
+                    
+                    <div class="policy-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; position: relative;">
+                         <button type="button" onclick="window.location.href='/settings'" class="save-button" style="width: auto; padding: 10px 30px;">Назад</button>
+                         <img src="/static/image/1.png" alt="Маскот" class="mascot-form-corner" style="width: 80px; height: auto; position: absolute; right: 0; bottom: -10px;"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

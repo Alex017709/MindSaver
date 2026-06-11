@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Календар</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="sidebar">
+            <nav>
+                <a href="/calendar" class="nav-item active">
+                    <span class="material-icons">calendar_today</span>
+                    <span>календар</span>
+                </a>
+                <a href="/stats" class="nav-item">
+                    <span class="material-icons">show_chart</span>
+                    <span>статистика</span>
+                </a>
+                <a href="/profile" class="nav-item profile-item">
+                    <img src="/static/image/1.png" alt="Профіль" class="profile-avatar">
+                    <span>профіль</span>
+                </a>
+                <a href="/settings" class="nav-item settings-item">
+                    <span class="material-icons">settings</span>
+                    <span>налаштування</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="main-content" style="flex-direction: column; align-items: center; position: relative; padding-top: 60px;">
+            
+            <button class="save-button" style="position: absolute; top: 20px; right: 20px; width: auto; border-radius: 50px; padding: 10px 25px; font-size: 16px;" 
+                    onclick="const t = new Date(); openRecordModal(null, t.getDate(), t.getMonth() + 1, t.getFullYear());">
+                + Додати за сьогодні
+            </button>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1000px; margin-bottom: 20px; background: var(--bg-card); padding: 15px 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <button onclick="changeMonth(-1)" class="save-button" style="width: auto; border-radius: 10px; padding: 10px 20px;">&#8592; Попередній</button>
+                <h2 id="month-year-display" style="margin: 0; font-weight: bold;">--</h2>
+                <button onclick="changeMonth(1)" class="save-button" style="width: auto; border-radius: 10px; padding: 10px 20px;">Наступний &#8594;</button>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+    </div>
+
+    <div id="recordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title" style="margin-bottom: 25px; text-align: center; font-weight: bold;">Запис</h2>
+            
+            <form onsubmit="saveRecordFromCalendar(event)">
+                <div class="input-row">
+                    <span class="input-label">настрій</span>
+                    <div class="scale-container" id="mood-scale" data-value="0">
+                        <button type="button" class="scale-btn minus-btn">-</button>
+                        <div class="squares">
+                            <div class="square-item" data-value="1"></div>
+                            <div class="square-item" data-value="2"></div>
+                            <div class="square-item" data-value="3"></div>
+                            <div class="square-item" data-value="4"></div>
+                            <div class="square-item" data-value="5"></div>
+                            <div class="square-item" data-value="6"></div>
+                            <div class="square-item" data-value="7"></div>
+                            <div class="square-item" data-value="8"></div>
+                            <div class="square-item" data-value="9"></div>
+                            <div class="square-item" data-value="10"></div>
+                        </div>
+                        <button type="button" class="scale-btn plus-btn">+</button>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <span class="input-label">рівень енергії</span>
+                    <div class="scale-container" id="energy-scale" data-value="0">
+                        <button type="button" class="scale-btn minus-btn">-</button>
+                        <div class="squares">
+                            <div class="square-item" data-value="1"></div>
+                            <div class="square-item" data-value="2"></div>
+                            <div class="square-item" data-value="3"></div>
+                            <div class="square-item" data-value="4"></div>
+                            <div class="square-item" data-value="5"></div>
+                            <div class="square-item" data-value="6"></div>
+                            <div class="square-item" data-value="7"></div>
+                            <div class="square-item" data-value="8"></div>
+                            <div class="square-item" data-value="9"></div>
+                            <div class="square-item" data-value="10"></div>
+                        </div>
+                        <button type="button" class="scale-btn plus-btn">+</button>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <span class="input-label">рівень стресу</span>
+                    <div class="scale-container" id="stress-scale" data-value="0">
+                        <button type="button" class="scale-btn minus-btn">-</button>
+                        <div class="squares">
+                            <div class="square-item" data-value="1"></div>
+                            <div class="square-item" data-value="2"></div>
+                            <div class="square-item" data-value="3"></div>
+                            <div class="square-item" data-value="4"></div>
+                            <div class="square-item" data-value="5"></div>
+                            <div class="square-item" data-value="6"></div>
+                            <div class="square-item" data-value="7"></div>
+                            <div class="square-item" data-value="8"></div>
+                            <div class="square-item" data-value="9"></div>
+                            <div class="square-item" data-value="10"></div>
+                        </div>
+                        <button type="button" class="scale-btn plus-btn">+</button>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <span class="input-label" style="font-size: 16px;">хештег проведеного дня</span>
+                    <select class="tag-dropdown" id="hashtag-select">
+                        <option value="0">party</option>
+                        <option value="1">birthday</option>
+                        <option value="2">shopping</option>
+                        <option value="3">fishing</option>
+                        <option value="4">watch film</option>
+                        <option value="5">listening music</option>
+                        <option value="6">work</option>
+                        <option value="7">teaching</option>
+                        <option value="8">relax</option>
+                        <option value="9">play game</option>
+                    </select>
+                </div>
+
+                <div class="input-row">
+                    <span class="input-label" style="font-size: 16px;">коротка нотатка</span>
+                    <textarea id="note-input" class="note-input" maxlength="250"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" class="save-button" style="flex-grow: 1;">зберегти</button>
+                    <button type="button" id="deleteBtn" class="save-button" style="display: none;" onclick="deleteCurrentRecord(event)">видалити</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

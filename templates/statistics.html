@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Статистика</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <nav>
+                <a href="/calendar" class="nav-item">
+                    <span class="material-icons">calendar_today</span> календар
+                </a>
+                <a href="/stats" class="nav-item active">
+                    <span class="material-icons">show_chart</span> статистика
+                </a>
+            </nav>
+            <div class="footer-nav">
+                <a href="/profile" class="nav-item profile-item">
+                    <img src="/static/image/1.png" alt="Профіль" class="profile-avatar"> профіль
+                </a>
+                <a href="/settings" class="nav-item settings-item">
+                    <span class="material-icons">settings</span> налаштування
+                </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="stats-card">
+                <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px;">
+                    <input type="date" id="start-date" class="login-input" style="font-size: 16px; padding: 8px 12px; border-radius: 20px;">
+                    <input type="date" id="end-date" class="login-input" style="font-size: 16px; padding: 8px 12px; border-radius: 20px;">
+                </div>
+
+                <div class="pie-chart" id="dynamic-pie-chart"></div>
+                
+                <div class="chart-legend">
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 20px; height: 20px; background: #d9e4ff; border-radius: 50%;"></div> Настрій</div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 20px; height: 20px; background: #384edb; border-radius: 50%;"></div> Енергія</div>
+                    <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 20px; height: 20px; background: #384edb; border-radius: 50%;"></div> Стрес</div>
+                </div>
+                
+                <div style="display: flex; justify-content: center;">
+                    <select class="tag-dropdown" id="hashtag-select" style="max-width: 250px;">
+                        <option value="-1">Всі хештеги</option>
+                        <option value="0">party</option>
+                        <option value="1">birthday</option>
+                        <option value="2">shopping</option>
+                        <option value="3">fishing</option>
+                        <option value="4">watch film</option>
+                        <option value="5">listening music</option>
+                        <option value="6">work</option>
+                        <option value="7">teaching</option>
+                        <option value="8">relax</option>
+                        <option value="9">play game</option>
+                    </select>
+                </div>
+
+                <div id="stats-info" style="margin-top: 15px; font-size: 16px; font-weight: bold; text-align: center;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

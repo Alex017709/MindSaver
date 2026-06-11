@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>MindSaver - Реєстрація</title>
+    <link rel="stylesheet" href="/static/css/style.css"> 
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="auth-panel">
+            <h2 style="text-align: center; font-size: 32px; margin-bottom: 30px;">Реєстрація</h2>
+            <form id="registerForm">
+                <div class="input-group">
+                    <label>Ім'я (Логін)</label>
+                    <input type="text" id="reg_name" class="login-input" maxlength="250" required>
+                </div>
+                <div class="input-group">
+                    <label>Дата (РРРР.ММ.ДД)</label>
+                    <input type="text" id="reg_birth" class="login-input" placeholder="2000.01.01" required>
+                </div>
+                <div class="input-group">
+                    <label>Пароль</label>
+                    <input type="password" id="reg_pass" class="login-input" maxlength="100" required>
+                </div>
+                <button type="submit" class="login-button">Зареєструватися</button>
+            </form>
+            <div class="form-footer">
+                <a href="/" style="display: block; text-align: center; margin-top: 20px; width: 100%;">Вже є акаунт?</a>
+            </div>
+        </div>      
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

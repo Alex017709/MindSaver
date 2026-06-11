@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Політика Конфіденційності</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="sidebar">
+            <nav>
+                <a href="/calendar" class="nav-item">
+                    <span class="material-icons">calendar_today</span>
+                    календар
+                </a>
+                
+                <a href="/stats" class="nav-item">
+                    <span class="material-icons">show_chart</span>
+                    статистика
+                </a>
+            </nav>
+            
+            <div class="footer-nav">                       
+                
+                <a href="/profile" class="nav-item profile-item">
+                    <img src="/static/image/1.png" alt="Профіль" class="profile-avatar">
+                    профіль
+                </a>
+                
+                <a href="/settings" class="nav-item active settings-item"> 
+                    <span class="material-icons">settings</span>
+                    налаштування
+                </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <div id="privacy-policy-view" class="tab-content active">
+                <div class="settings-card" style="max-width: 800px; line-height: 1.6;">
+                    
+                    <div class="policy-content">
+                        <h2 style="margin-bottom: 25px; text-align: center; font-weight: bold;">Політика Конфіденційності</h2>
+                        
+                        <h3 style="margin-top: 20px; font-size: 22px; color: var(--accent-color);">1. Збір та Використання Інформації</h3>
+                        <p style="margin-bottom: 10px;">Оскільки MindSaver — це настільний застосунок з локальною базою даних, ми застосовуємо такі принципи збору даних:</p>
+                        
+                        <h4 style="margin-top: 15px; font-size: 18px;">1.1. Персональні Дані Користувача</h4>
+                        <ul style="margin-bottom: 15px; padding-left: 20px;">
+                            <li><strong>Тип даних:</strong> Ім'я користувача та Аватар (за бажанням).</li>
+                            <li><strong>Мета використання:</strong> Створення персоналізованого Профілю Користувача всередині Застосунку. Ці дані необхідні лише для відображення у графічному інтерфейсі.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 15px; font-size: 18px;">1.2. Дані Моніторингу Психологічного Стану</h4>
+                        <ul style="margin-bottom: 25px; padding-left: 20px;">
+                            <li><strong>Тип даних:</strong> Щоденні оцінки Настрою, Рівня Стресу, Рівня Енергії, а також Короткі Текстові Нотатки Користувача.</li>
+                            <li><strong>Мета використання:</strong></li>
+                            <ul style="padding-left: 20px; margin-top: 5px;">
+                                <li>Генерація статистики та графіків.</li>
+                                <li>Робота внутрішнього алгоритму для надання персоналізованих рекомендацій.</li>
+                            </ul>
+                        </ul>
+                        
+                        <h3 style="margin-top: 20px; font-size: 22px; color: var(--accent-color);">2. Зберігання та Безпека Даних</h3>
+                        <h4 style="margin-top: 15px; font-size: 18px;">2.1. Локальне Зберігання</h4>
+                        <ul style="margin-bottom: 25px; padding-left: 20px;">
+                            <li><strong>Принцип:</strong> Усі дані, введені Користувачем (включаючи оцінки та нотатки), зберігаються <strong>ЛОКАЛЬНО</strong> на Вашому пристрої у файлі.</li>
+                            <li><strong>Передача даних:</strong> MindSaver <strong>НЕ передає, НЕ синхронізує та НЕ завантажує</strong> Ваші дані на будь-які зовнішні сервери, хмарні сховища або треті сторони.</li>
+                            <li><strong>Відповідальність:</strong> Безпека локального пристрою (комп'ютера) Користувача є його власною відповідальністю.</li>
+                            <li>Оскільки дані не передаються, ризик їх перехоплення при транзиті дорівнює нулю.</li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 20px; font-size: 22px; color: var(--accent-color);">3. Розкриття Даних Третім Сторонам</h3>
+                        <p style="margin-bottom: 20px;">MindSaver <strong>НЕ розкриває, НЕ продає, НЕ обмінює та НЕ передає</strong> Ваші особисті дані або дані моніторингу третім сторонам. Ваша інформація про психологічний стан є виключно Вашою і залишається на Вашому пристрої.</p>
+                    </div>
+                    
+                    <div class="policy-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; position: relative;">
+                         <button type="button" onclick="window.location.href='/settings'" class="save-button" style="width: auto; padding: 10px 30px;">Назад</button>
+                         <img src="/static/image/1.png" alt="Маскот" class="mascot-form-corner" style="width: 80px; height: auto; position: absolute; right: 0; bottom: -10px;">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

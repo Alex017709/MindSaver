@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Вхід</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="left-panel">
+            <div class="welcome-block">
+                <img src="/static/image/1.png" alt="Маскот MindSaver">
+                <div class="welcome-text">
+                    <h1>Ласкаво Просимо до MindSaver!</h1>
+                    <h2>MindSaver — це ваш особистий щоденник і аналітик, який допоможе вам зрозуміти свій стан.</h2>
+                </div>
+            </div>
+            
+            <div class="welcome-info">
+                <h3>Що ви отримаєте?</h3>
+                <ul class="info-list">
+                    <li>Щоденна Карта Вашого Стану: Швидко фіксуйте настрій, рівень стресу та енергії.</li>
+                    <li>Чітка Статистика: Дивіться графіки, які покажуть зміни вашого стану за тиждень чи місяць.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <form class="login-form" id="loginForm">
+                <h2>Вхід</h2>
+                
+                <div class="input-group">
+                    <label for="login">логін</label>
+                    <input type="text" id="login" class="login-input" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">пароль</label>
+                    <input type="password" id="password" class="login-input" required>
+                </div>
+                
+                <button type="submit" class="login-button">Ввійти</button>
+            </form>
+            
+            <div class="form-footer">
+                <a href="/reset">Забули пароль?</a>
+                <a href="/registr.html">реєстрація</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

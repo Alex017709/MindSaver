@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSaver - Профіль</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="sidebar">
+            <nav>
+                <a href="/calendar" class="nav-item">
+                    <span class="material-icons">calendar_today</span>
+                    календар
+                </a>
+                <a href="/stats" class="nav-item">
+                    <span class="material-icons">show_chart</span>
+                    статистика
+                </a>
+            </nav>
+            
+            <div class="footer-nav">
+                <a href="/profile" class="nav-item active profile-item">
+                    <img src="/static/image/1.png" alt="Профіль" class="profile-avatar">
+                    профіль
+                </a>
+                <a href="/settings" class="nav-item settings-item">
+                    <span class="material-icons">settings</span>
+                    налаштування
+                </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="profile-view" class="tab-content active">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <img src="/static/image/1.png" alt="Аватар користувача" class="profile-large-avatar">
+                        <div class="profile-info-text">
+                            <h2 id="profile-name">Завантаження...</h2>
+                            <p id="profile-reg-date">ID користувача: --</p>
+                            <p id="profile-birthday">день народження: --/--/----</p>
+                            <p id="profile-days-together">всього записів: 0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bar-chart-container">
+                        <div class="stat-bar-group">
+                            <div class="bar mood-bar" id="bar-mood" style="height: 0px; transition: height 0.5s;"></div>
+                            <p>Настрій</p>
+                        </div>
+                        <div class="stat-bar-group">
+                            <div class="bar stress-bar" id="bar-stress" style="height: 0px; transition: height 0.5s;"></div>
+                            <p>Стрес</p>
+                        </div>
+                        <div class="stat-bar-group">
+                            <div class="bar energy-bar" id="bar-energy" style="height: 0px; transition: height 0.5s;"></div>
+                            <p>Рівень енергії</p>
+                        </div>
+                    </div>
+                    
+                    <a href="/settings" class="edit-data-button">редагувати дані</a>
+
+                    <button type="button" id="logout-btn" class="save-button" style="background-color: #F44336; color: white; margin-top: 30px; width: 100%;">
+                        Вийти з акаунта
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js?v=2"></script>
+</body>
+</html>
